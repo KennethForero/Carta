@@ -9,7 +9,7 @@
         
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #f0f9f5;
+            background: linear-gradient(135deg, #fff0f6, #ffdeeb, #fcc2d7);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -26,6 +26,7 @@
             top: 0;
             left: 0;
             z-index: 1;
+            opacity: 0.3;
         }
         
         .carta-container {
@@ -36,13 +37,13 @@
         }
         
         .carta {
-            background: linear-gradient(to bottom right, #e0f7fa, #b2ebf2, #80deea);
+            background: linear-gradient(to bottom right, #fff9fb, #ffeef2, #ffe5ec);
             border-radius: 15px;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(46, 125, 138, 0.3);
+            box-shadow: 0 10px 30px rgba(214, 51, 132, 0.1);
             position: relative;
             overflow: hidden;
-            border: 1px solid #4db6ac;
+            border: 1px solid #f8bbd0;
         }
         
         .carta:before {
@@ -53,7 +54,7 @@
             right: 0;
             bottom: 0;
             background: url('https://www.transparenttextures.com/patterns/cream-paper.png');
-            opacity: 0.15;
+            opacity: 0.1;
             pointer-events: none;
         }
         
@@ -78,7 +79,7 @@
         
         .cabecera h1 {
             font-family: 'Dancing Script', cursive;
-            color: #00796b;
+            color: #d81b60;
             font-size: 2.5rem;
             margin-bottom: 10px;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
@@ -87,32 +88,33 @@
         .fecha {
             text-align: center;
             font-style: italic;
-            color: #00897b;
+            color: #c2185b;
             margin-bottom: 30px;
             font-weight: 600;
         }
         
         .saludo {
             margin-bottom: 15px;
-            color: #00695c;
+            color: #ad1457;
             font-weight: 600;
         }
         
         .contenido {
             line-height: 1.8;
             margin-bottom: 20px;
-            color: #004d40;
+            color: #880e4f;
             text-align: justify;
         }
         
         .contenido p {
             margin-bottom: 15px;
+            min-height: 1.8em; /* Mantener espacio para líneas vacías */
         }
         
         .despedida {
             margin-top: 30px;
             margin-bottom: 15px;
-            color: #00695c;
+            color: #ad1457;
         }
         
         .firma {
@@ -148,6 +150,30 @@
             transform: rotate(15deg);
             color: #e91e63;
         }
+        
+        .corazon-brillante {
+            animation: brillo 2s infinite alternate;
+        }
+        
+        @keyframes brillo {
+            from { text-shadow: 0 0 5px #ff80ab; }
+            to { text-shadow: 0 0 20px #ff4081, 0 0 30px #ff80ab; }
+        }
+        
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 20px;
+            background-color: #e91e63;
+            animation: parpadeo 0.7s infinite;
+            vertical-align: middle;
+            margin-left: 2px;
+        }
+        
+        @keyframes parpadeo {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
     </style>
 </head>
 <body>
@@ -155,7 +181,7 @@
     
     <div class="carta-container">
         <div class="carta">
-            <div class="sello-decorativo">✉️</div>
+            <div class="sello-decorativo">💌</div>
             
             <!-- Corazones flotantes -->
             <div class="corazon-flotante" style="top: 10%; left: 15%;">❤️</div>
@@ -172,36 +198,33 @@
             </div>
             
             <div class="saludo">
-                <p>Mi Vida,</p>
+                <p id="texto-saludo"></p>
             </div>
             
             <div class="contenido">
-                <p>Estos 6 años a tu lado me han demostrado, sin duda, que no me equivoqué contigo. Eres una mujer maravillosa, me encantas, y sigues siendo lo más lindo que me ha pasado y que me sigue pasando cada día.</p>
-                
-                <p>Me has enseñado tanto, hemos crecido juntos y hemos aprendido tanto el uno del otro, y así quiero que siga siendo: acompañándonos, celebrando nuestros logros, apoyándonos, y viendo al otro triunfar.</p>
-                
-                <p>Eres el amor de mi vida, y no solo te amo como antes. Te amo muchísimo más. Me haces sentir amado, valorado, y afortunado de tenerte como compañera de vida.</p>
-                
-                <p>Ojalá sigan muchos años más. Aceleras mi corazón cada día, y me encanta todo lo hermoso que despiertas en mí.</p>
+                <p id="texto-parrafo1"></p>
+                <p id="texto-parrafo2"></p>
+                <p id="texto-parrafo3"></p>
+                <p id="texto-parrafo4"></p>
             </div>
             
             <div class="despedida">
-                <p>Con todo mi amor,</p>
+                <p id="texto-despedida"></p>
             </div>
             
             <div class="firma">
-                <p>Kenneth Forero</p>
+                <p id="texto-firma"></p>
             </div>
             
             <div class="corazon-final">
-                <p>Felices 6 años, mi amor ❤️</p>
+                <p class="corazon-brillante" id="texto-cierre"></p>
             </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Configuración de partículas
+        // Configuración de partículas rosadas
         document.addEventListener('DOMContentLoaded', function() {
             particlesJS('particles-js', {
                 "particles": {
@@ -213,7 +236,7 @@
                         }
                     },
                     "color": {
-                        "value": ["#4db6ac", "#80deea", "#26a69a", "#b2ebf2"]
+                        "value": ["#f8bbd0", "#f48fb1", "#f06292", "#ec407a"]
                     },
                     "shape": {
                         "type": "circle",
@@ -233,8 +256,8 @@
                     "line_linked": {
                         "enable": true,
                         "distance": 150,
-                        "color": "#80deea",
-                        "opacity": 0.4,
+                        "color": "#f48fb1",
+                        "opacity": 0.3,
                         "width": 1
                     },
                     "move": {
@@ -263,7 +286,7 @@
                         "grab": {
                             "distance": 140,
                             "line_linked": {
-                                "opacity": 1
+                                "opacity": 0.8
                             }
                         },
                         "push": {
@@ -274,7 +297,7 @@
                 "retina_detect": true
             });
             
-            // Crear corazones aleatorios que suben
+            // Crear corazones rosados aleatorios que suben
             function crearCorazon() {
                 const corazon = document.createElement('div');
                 corazon.innerHTML = '❤️';
@@ -283,6 +306,7 @@
                 corazon.style.left = Math.random() * 100 + 'vw';
                 corazon.style.bottom = '-50px';
                 corazon.style.opacity = Math.random() * 0.5 + 0.3;
+                corazon.style.color = `hsl(${Math.random() * 20 + 340}, 70%, 65%)`;
                 corazon.style.animation = `subir ${Math.random() * 5 + 5}s linear forwards`;
                 document.body.appendChild(corazon);
                 
@@ -303,6 +327,73 @@
             document.head.appendChild(style);
             
             setInterval(crearCorazon, 300);
+            
+            // Efecto de máquina de escribir
+            const textos = {
+                saludo: "Mi vida,",
+                parrafo1: "Estos 6 años a tu lado me han demostrado, sin duda, que no me equivoqué contigo. Eres una mujer maravillosa, me encantas, y sigues siendo lo más lindo que me ha pasado y que me sigue pasando cada día.",
+                parrafo2: "Me has enseñado tanto, hemos crecido juntos y hemos aprendido mucho el uno del otro. Así quiero que siga siendo: acompañándonos, celebrando nuestros logros, apoyándonos y viendo al otro triunfar",
+                parrafo3: "Eres el amor de mi vida, y no solo te amo como antes… Te amo muchísimo más. Me haces sentir amado, valorado y afortunado de tenerte como compañera de vida.",
+                parrafo4: "Ojalá sigan muchos años más. Aceleras mi corazón cada día, y me encanta todo lo hermoso que despiertas en mí.",
+                despedida: "Con todo mi amor,",
+                firma: "Kenneth Forero",
+                cierre: "Felices 6 años, mi amor ❤️"
+            };
+            
+            const velocidadEscritura = 20; // ms entre caracteres
+            const elementos = {
+                saludo: document.getElementById('texto-saludo'),
+                parrafo1: document.getElementById('texto-parrafo1'),
+                parrafo2: document.getElementById('texto-parrafo2'),
+                parrafo3: document.getElementById('texto-parrafo3'),
+                parrafo4: document.getElementById('texto-parrafo4'),
+                despedida: document.getElementById('texto-despedida'),
+                firma: document.getElementById('texto-firma'),
+                cierre: document.getElementById('texto-cierre')
+            };
+            
+            function escribirTexto(elemento, texto, callback) {
+                let i = 0;
+                elemento.innerHTML = ''; // Limpiar el contenido
+                
+                function escribir() {
+                    if (i < texto.length) {
+                        elemento.innerHTML += texto.charAt(i);
+                        i++;
+                        setTimeout(escribir, velocidadEscritura);
+                    } else {
+                        if (callback) callback();
+                    }
+                }
+                
+                // Añadir cursor inicial
+                const cursor = document.createElement('span');
+                cursor.className = 'cursor';
+                elemento.appendChild(cursor);
+                
+                // Iniciar escritura
+                setTimeout(() => {
+                    elemento.removeChild(cursor);
+                    escribir();
+                }, 500);
+            }
+            
+            // Secuencia de escritura
+            setTimeout(() => escribirTexto(elementos.saludo, textos.saludo, () => {
+                setTimeout(() => escribirTexto(elementos.parrafo1, textos.parrafo1, () => {
+                    setTimeout(() => escribirTexto(elementos.parrafo2, textos.parrafo2, () => {
+                        setTimeout(() => escribirTexto(elementos.parrafo3, textos.parrafo3, () => {
+                            setTimeout(() => escribirTexto(elementos.parrafo4, textos.parrafo4, () => {
+                                setTimeout(() => escribirTexto(elementos.despedida, textos.despedida, () => {
+                                    setTimeout(() => escribirTexto(elementos.firma, textos.firma, () => {
+                                        setTimeout(() => escribirTexto(elementos.cierre, textos.cierre), 500);
+                                    }), 500);
+                                }), 500);
+                            }), 500);
+                        }), 500);
+                    }), 500);
+                }), 500);
+            }), 1000);
         });
     </script>
 </body>
